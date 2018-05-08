@@ -27,15 +27,15 @@ from distutils.core import setup
 INSTALL_REQUIREMENTS = ['requests']
 
 setup(
-    name = 'mercadobitcoin',
-    description = 'A Python wrapper for Mercado Bitcoin API',
-    version = '0.5.0',
-    packages = ['mercadobitcoin'],
-    author = 'Alan Fachini',
-    author_email = 'alfakini@gmail.com',
-    url = 'https://github.com/alfakini/python-mercadobitcoin',
-    download_url = 'https://github.com/alfakini/python-mercadobitcoin/tarball/0.5.0',
-    keywords = ['bitcoin', 'litcoin', 'mercadobitcoin', 'trade', 'orderbook'],
+    name = 'bitcointrade',
+    description = 'A Python wrapper for Bitcointrade API',
+    version = '0.6.0',
+    packages = ['bitcointrade'],
+    author = 'Leandro Trindade',
+    author_email = 'just4span@gmail.com',
+    url = 'https://github.com/Megarushing/bitcointrade-python-api.git',
+    download_url = 'https://github.com/Megarushing/bitcointrade-python-api/tarball/0.6.0',
+    keywords = ['bitcoin', 'litecoin', 'bitcointrade', 'trade', 'orderbook'],
     install_requires=INSTALL_REQUIREMENTS,
     classifiers = [
         'Development Status :: 4 - Beta',

@@ -13,5 +13,5 @@ engines:
 
 ratings:
   paths:
-  - "mercadobitcoin/**.py"
+  - "bitcointrade/**.py"
   - "tests/**.py"

@@ -1,61 +1,41 @@
-# mercadobitcoin
+# bitcointrade python api
 
-[![Join the chat at https://gitter.im/python-mercadobitcoin/Lobby](https://badges.gitter.im/python-mercadobitcoin/Lobby.svg)](https://gitter.im/python-mercadobitcoin/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/alfakini/python-mercadobitcoin.svg?branch=master)](https://travis-ci.org/alfakini/python-mercadobitcoin)
-[![Code Climate](https://codeclimate.com/github/alfakini/python-mercadobitcoin/badges/gpa.svg)](https://codeclimate.com/github/alfakini/python-mercadobitcoin)
-[![Test Coverage](https://codeclimate.com/github/alfakini/python-mercadobitcoin/badges/coverage.svg)](https://codeclimate.com/github/alfakini/python-mercadobitcoin/coverage)
-[![PyPI](https://img.shields.io/pypi/v/mercadobitcoin.svg)](https://pypi.python.org/pypi/mercadobitcoin)
-
-A Python wrapper for Mercado Bitcoin API.
+A Python wrapper for Bitcointrade API. Forked project from python-mercadobitcoin by Alan Fachini (alfakini@gmail.com)
 
 ## Installation
 
-Directly from [PyPI](https://pypi.python.org/pypi/mercadobitcoin):
-
 ```bash
-pip install mercadobitcoin
-```
-
-You can also install directly from the GitHub repository to have the newest features by running:
-
-```bash
-git clone https://github.com/alfakini/python-mercadobitcoin.git
-cd python-mercadobitcoin
+git clone https://github.com/Megarushing/bitcointrade-python-api.git
+cd bitcointrade-python-api
 python setup.py install
 ```
 
 ## Basic Usage
 
-Below you can see the available Mercado Bitcoin API methods you can use:
+Below you can see the available Bitcointrade API methods you can use:
 
 ```python
-import mercadobitcoin
-mbtc = mercadobitcoin.Api()
-mbtc.ticker()
-mbtc.orderbook()
-mbtc.trades()
-mbtc.ticker_litecoin()
-mbtc.orderbook_litecoin()
-mbtc.trades_litecoin()
+import bitcointrade
+btctrade = bitcointrade.PublicApi()
+
+btctrade.list_orderbook()
 ```
 
 And the private Trade API:
 
 ```python
-from mercadobitcoin import TradeApi
+from bitcointrade import PrivateApi
 
-mbtc = TradeApi(<API_ID>, <API_SECRET>)
+btctrade = PrivateApi(<API_ID>, <API_SECRET>)
 
-mbtc.list_system_messages()
-mbtc.get_account_info()
-mbtc.get_order(coin_pair="BRLBTC", order_id=1)
-mbtc.list_orders(coin_pair="BRLBTC")
-mbtc.list_orderbook(coin_pair="BRLBTC")
-mbtc.place_buy_order(coin_pair="BRLBTC", quantity="42.00", limit_price="5000")
-mbtc.place_sell_order(coin_pair="BRLBTC", quantity="42.00", limit_price="5000")
-mbtc.cancel_order(coin_pair="BRLBTC", order_id=1)
-mbtc.get_withdrawal(coin="BRL", withdrawal_id=1)
-mbtc.withdraw_coin(coin_pair="BRL", quantity="42", destiny="1", description="Trasfering Money.")
+btctrade.list_orderbook(currency="BTC")
+btctrade.create_order(currency="BTC",amount="0.1",type="buy",subtype="market",unit_price="")
+btctrade.balance()
+btctrade.estimated_price(currency="BTC",amount="0.1","type"="buy")
+btctrade.bitcoin_withdraw_fee()
+btctrade.ethereum_withdraw_fee()
+btctrade.bitcoin_create_withdraw(destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",fee="0.0001",type="fast",amount="0.1")
+
 ```
 
 ## Development
@@ -75,5 +55,5 @@ tox
 
 ## References
 
-* [Mercado Bitcoin public data API](https://www.mercadobitcoin.com.br/api-doc)
-* [Mercado Bitcoin private trade API](https://www.mercadobitcoin.com.br/trade-api)
+* [Bitcointrade public data API](https://apidocs.bitcointrade.com.br/#1ce5ce29-3e4d-8e97-3b43-185bb3862289)
+* [Bitcointrade private trade API](https://apidocs.bitcointrade.com.br/#e1ba3dbf-6fef-238c-41da-92885c00290f)
