@@ -1,98 +1,65 @@
 import requests
 import json
-
-try:
-    from urllib.parse import urlencode
-except ImportError:
-    from urllib import urlencode
+from .utils import check_args
 
 from .api import Base
-from .errors import ApiError, ArgumentError
-
-
-def check_values(value, arg, arg_value):
-    if type(value) == type:
-        if type(arg_value) != value:
-            raise ArgumentError(u"Type of argument {} is invalid. It should be {}".format(arg, value))
-    elif arg_value not in value:
-        raise ArgumentError(u"Value of argument {} is invalid. It should be one of {}".format(arg, value))
-
-
-def check_args(kwargs, required_parameters, optional_parameters={}):
-    args = kwargs.keys()
-    required_args = required_parameters.keys()
-    optional_args = optional_parameters.keys()
-
-    missing_args = list(set(required_args) - set(args))
-    if len(missing_args) > 0:
-        raise ArgumentError(u"Parameter {} is required".format(missing_args))
-
-    for arg_name, arg_value in kwargs.items():
-        if arg_name in optional_args:
-            optional_value = optional_parameters[arg_name]
-            check_values(optional_value, arg_name, arg_value)
-        elif arg_name in required_args:
-            required_value = required_parameters[arg_name]
-            check_values(required_value, arg_name, arg_value)
+from .errors import ApiError
 
 class PrivateApi(Base):
-    def __init__(self, token=None):
+    def __init__(self, token):
         Base.__init__(self)
         self.token = token
+        self.headers = {"Content-Type": "application/json",
+                        "Authorization": "ApiToken "+self.token}
 
-    def list_orderbook(self, **kwargs):
-        """https://api.bitcointrade.com.br/v1/market?currency=BTC"""
-        check_args(kwargs, {"currency": ["BTC","LTC","BCH","ETH"]})
-        return self.__check_response(self.__get_tapi("market","", kwargs ))
+    def bitcoin_withdraw_fee(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#cd0b440a-109b-80b3-9df6-8f3a0b10e32f
+        Returns fee estimates for each confirmation speed category
+        """
+        return self.get_api("bitcoin","withdraw/fee", **params)
 
-    def create_order(self, **kwargs):
-        """https://api.bitcointrade.com.br/v1/market/create_order"""
-        check_args(kwargs, { "currency": ["BTC","LTC","BCH","ETH"], "amount": str, "type":["buy","sell"],"subtype":["market","limited"], "unit_price": str })
-        return self.__check_response(self.__post_tapi("market","/create_order", kwargs ))
+    def bitcoin_withdraw_list(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#2f4b6643-ae82-d9a3-8cb9-d025e92982fe
+        Returns users withdrawals list
+        Possible arguments:
+        :param str start_date: (ISO-8601 optional)
+        :param str end_date: (ISO-8601 optional)
+        :param str status: pending/confirmed/canceled
+        :param int page_size: (1-1000 optional)
+        :param int current_page: (numeric optional)
+        """
+        check_args(params, optional_parameters={"start_date": str, "end_date": str,
+                            "status": ["pending","confirmed","canceled"], "page_size": int, "current_page": int})
+        return self.get_api("bitcoin","withdraw", **params)
 
-    def balance(self, **kwargs):
-        """https://api.bitcointrade.com.br/v1/wallets/balance"""
-        return self.__check_response(self.__get_tapi("wallets","/balance", kwargs ))
+    def bitcoin_create_withdraw(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#0f218e0f-89a3-0b16-a670-6582ae858b1a
+        Withdraws bitcoins to requested address
 
-    def estimated_price(self, **kwargs):
-        """https://api.bitcointrade.com.br/v1/market/estimated_price?amount=583.23&currency=BTC&type=buy"""
-        check_args(kwargs, {"currency": ["BTC","LTC","BCH","ETH"], "amount": str, "type": ["buy", "sell"]})
-        return self.__check_response(self.__get_tapi("market","/estimated_price", kwargs ))
+        Arguments:
+        :param str destination: wallet address to process withdrawal
+        :param float fee: amount to pay for transaction fees
+        :param str fee_type: fast / regular / slow
+        :param float amount: amount to send
+        """
+        check_args(params, {"destination": str,"fee": str,"fee_type":["fast","regular","slow"], "amount": float})
+        return self.post_api("bitcoin","withdraw", **params)
 
-    def bitcoin_withdraw_fee(self, **kwargs):
-        """https://api.bitcointrade.com.br/v1/bitcoin/withdraw/fee"""
-        return self.__check_response(self.__get_tapi("bitcoin","/withdraw/fee", kwargs ))
-
-    def ethereum_withdraw_fee(self, **kwargs):
-        """https://api.bitcointrade.com.br/v1/ethereum/withdraw/fee"""
-        return self.__check_response(self.__get_tapi("ethereum","/withdraw/fee", kwargs ))
-
-
-    def bitcoin_create_withdraw(self, **kwargs):
-        """https://api.bitcointrade.com.br/v1/bitcoin/withdraw"""
-        check_args(kwargs, {"destination": str,"fee": str,"fee_type":["fast","regular","slow"], "amount": str })
-        return self.__check_response(self.__post_tapi("bitcoin","/withdraw", kwargs ))
-
-    def __check_response(self, response):
-        if response["message"] != None:
-            raise ApiError(response["message"])
-        return response
-
-    def __get_tapi(self, api_type, action, params={}):
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": "ApiToken "+self.token
-        }
-
-        response = requests.get("https://%s/%s/%s%s" % (self.host, self.api_version,api_type,action),params=params, headers=headers, timeout=30)
-        return response.json()
-
-    def __post_tapi(self, api_type, action, params={}):
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": "ApiToken "+self.token
-        }
-
-        response = requests.post("https://%s/%s/%s%s" % (self.host, self.api_version,api_type,action),data=json.dumps(params), headers=headers, timeout=30)
-        return response.json()
+    def bitcoin_deposit_list(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#34810ae9-69e0-8c83-5c61-01d81162be10
+        Returns users deposits list
+        Possible arguments:
+        :param str start_date: (ISO-8601 optional)
+        :param str end_date: (ISO-8601 optional)
+        :param str status: confirmation_pending / confirmed / canceled
+        :param int page_size: (1-1000 optional)
+        :param int current_page: (numeric optional)
+        """
+        check_args(params, optional_parameters={"start_date": str, "end_date": str,
+                            "status": ["confirmation_pending","confirmed","canceled"], "page_size": int, "current_page": int})
+        return self.get_api("bitcoin","deposits", **params)
 
