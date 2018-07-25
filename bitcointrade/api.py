@@ -15,8 +15,10 @@ class Base(object):
         self.timeout = TIMEOUT
 
     def __check_response(self, response):
-        response.raise_for_status()
-        r = response.json()
+        try:
+            r = response.json()
+        except:
+            response.raise_for_status()
         if r["message"] != None:
             raise ApiError(r["message"])
         return r
