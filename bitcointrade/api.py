@@ -15,9 +15,11 @@ class Base(object):
         self.timeout = TIMEOUT
 
     def __check_response(self, response):
-        if response["message"] != None:
-            raise ApiError(response["message"])
-        return response
+        response.raise_for_status()
+        r = response.json()
+        if r["message"] != None:
+            raise ApiError(r["message"])
+        return r
 
     def request_api(self,method,api_type, action, **params):
         """
@@ -33,12 +35,31 @@ class Base(object):
                                        self.api_version,
                                        api_type,
                                        action)
-        response = {}
+        response = None
         if method.upper() == "GET":
             response = requests.get(url,params=filtered,timeout=self.timeout,headers=self.headers)
         else:
             response = requests.request(url,data=json.dumps(filtered),timeout=self.timeout,headers=self.headers)
-        return self.__check_response(response.json())
+        return self.__check_response(response)
+
+    def request_api_noaction(self,method,api_type, **params):
+        """
+        Returns decoded json dict for requested api type, does not take action as param.
+        :param str method: Http method used
+        :param str api_type: The requested API action
+        :param \*\*params: data sent to API.
+        :return dict: decoded json received
+        """
+        filtered = {k: v for k, v in params.iteritems() if v != None}
+        url = "https://%s/%s/%s" % (self.host,
+                                       self.api_version,
+                                       api_type)
+        response = None
+        if method.upper() == "GET":
+            response = requests.get(url,params=filtered,timeout=self.timeout,headers=self.headers)
+        else:
+            response = requests.request(url,data=json.dumps(filtered),timeout=self.timeout,headers=self.headers)
+        return self.__check_response(response)
 
     def get_api(self, api_type, action, **params):
         """

@@ -1,11 +1,13 @@
 # bitcointrade python api
 
+**WARNING: still untested, use at own risk, awaiting for BitcoinTrade testnet response**
+
 A Python wrapper for Bitcointrade API. Forked project from python-mercadobitcoin by Alan Fachini (alfakini@gmail.com)
 
 ## Installation
 
 ```bash
-git clone https://github.com/Megarushing/bitcointrade-python-api.git
+git clone https://github.com/Megarushing/python-bitcointrade-api.git
 cd bitcointrade-python-api
 python setup.py install
 ```
