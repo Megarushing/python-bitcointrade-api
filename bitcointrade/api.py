@@ -14,7 +14,7 @@ class Base(object):
         self.headers = {"Content-Type": "application/json"}
         self.timeout = TIMEOUT
 
-    def __check_response(self, response):
+    def _check_response(self, response):
         try:
             r = response.json()
         except:
@@ -32,7 +32,7 @@ class Base(object):
         :param \*\*params: data sent to API.
         :return dict: decoded json received
         """
-        filtered = {k: v for k, v in params.iteritems() if v != None}
+        filtered = {k: v for k, v in params.items() if v != None}
         url = "https://%s/%s/%s/%s" % (self.host,
                                        self.api_version,
                                        api_type,
@@ -41,8 +41,8 @@ class Base(object):
         if method.upper() == "GET":
             response = requests.get(url,params=filtered,timeout=self.timeout,headers=self.headers)
         else:
-            response = requests.request(url,data=json.dumps(filtered),timeout=self.timeout,headers=self.headers)
-        return self.__check_response(response)
+            response = requests.request(method,url,data=json.dumps(filtered),timeout=self.timeout,headers=self.headers)
+        return self._check_response(response)
 
     def request_api_noaction(self,method,api_type, **params):
         """
@@ -52,7 +52,7 @@ class Base(object):
         :param \*\*params: data sent to API.
         :return dict: decoded json received
         """
-        filtered = {k: v for k, v in params.iteritems() if v != None}
+        filtered = {k: v for k, v in params.items() if v != None}
         url = "https://%s/%s/%s" % (self.host,
                                        self.api_version,
                                        api_type)
@@ -60,8 +60,8 @@ class Base(object):
         if method.upper() == "GET":
             response = requests.get(url,params=filtered,timeout=self.timeout,headers=self.headers)
         else:
-            response = requests.request(url,data=json.dumps(filtered),timeout=self.timeout,headers=self.headers)
-        return self.__check_response(response)
+            response = requests.request(method,url,data=json.dumps(filtered),timeout=self.timeout,headers=self.headers)
+        return self._check_response(response)
 
     def get_api(self, api_type, action, **params):
         """
@@ -94,7 +94,7 @@ class Api(Base):
         :param \*\*params: data sent to API encoded in url.
         :return dict: decoded json received
         """
-        filtered = {k: v for k, v in params.iteritems() if v != None}
+        filtered = {k: v for k, v in params.items() if v != None}
         url = "https://%s/%s/%s/%s/%s" % (self.host,
                                        self.api_version,
                                        api_type,
@@ -102,7 +102,7 @@ class Api(Base):
                                        action)
 
         response = requests.get(url,params=filtered,timeout=self.timeout,headers=self.headers)
-        return self.__check_response(response.json())
+        return self._check_response(response)
 
     def ticker(self,coin):
         """

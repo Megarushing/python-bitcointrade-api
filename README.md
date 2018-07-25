@@ -1,7 +1,5 @@
 # bitcointrade python api
 
-**WARNING: still untested, use at own risk, awaiting for BitcoinTrade testnet response**
-
 A Python wrapper for Bitcointrade API. Forked project from python-mercadobitcoin by Alan Fachini (alfakini@gmail.com)
 
 ## Installation
@@ -36,27 +34,44 @@ import bitcointrade
 btctrade = bitcointrade.PrivateApi("<API_SECRET>")
 
 btctrade.bitcoin_withdraw_fee()
-btctrade.bitcoin_withdraw_list(page_size=10,
-    current_page=1,
-    status="pending",
-    start_date="2017-01-01",
-    end_date="2018-01-25")
+btctrade.bitcoin_withdraw_list()
 btctrade.bitcoin_create_withdraw(destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",
-    fee="0.0001",
+    fee=0.0001,
     type="fast",
-    amount="0.1")
-btctrade.bitcoin_deposit_list(page_size=10,
-    current_page=1,
-    status="confirmed",
-    start_date="2017-01-01",
-    end_date="2018-01-01")
+    amount=0.1)
+btctrade.bitcoin_deposit_list()
 btctrade.orderbook_full(currency="BTC")
 btctrade.summary(currency="BTC")
+btctrade.create_order()
 btctrade.create_order(currency="BTC",
-    amount="0.1",
+    amount=0.1,
     type="buy",
     subtype="market",
     unit_price=10000.0)
+btctrade.get_user_orders()
+btctrade.cancel_order(id=<Order ID>)
+btctrade.estimated_price(currency="BTC",
+    amount=0.1,
+    type="buy")
+btctrade.balance()
+btctrade.ethereum_withdraw_fee()
+btctrade.ethereum_withdraw_list()
+btctrade.ethereum_create_withdraw(destination="0x27Db473751D76e2E9Af2b7A9b0199ef2c6Af838D",
+    fee=0.0001,
+    type="fast",
+    amount=0.1)
+btctrade.ethereum_deposit_list()
+btctrade.litecoin_withdraw_fee()
+btctrade.litecoin_withdraw_list()
+btctrade.litecoin_create_withdraw(destination="LhWeEXcVHpHxonqbLooKPNMzbmMetdHJdC",
+    fee=0.0001,
+    type="fast",
+    amount=0.1)
+btctrade.litecoin_deposit_list()
+
+```
+you may also use optional parameters when available:
+```python
 btctrade.get_user_orders(status="executed_completely",
     start_date="2017-01-01",
     end_date="2018-01-01",
@@ -64,36 +79,36 @@ btctrade.get_user_orders(status="executed_completely",
     type="buy",
     page_size=100,
     current_page=1)
-btctrade.cancel_order(id=<Order ID>)
-btctrade.estimated_price(currency="BTC",
-    amount="0.1",
-    type="buy")
-btctrade.balance()
-btctrade.ethereum_withdraw_fee()
+    
+    
+btctrade.bitcoin_deposit_list(page_size=10,
+    current_page=1,
+    status="confirmed",
+    start_date="2017-01-01",
+    end_date="2018-01-01")
+btctrade.bitcoin_withdraw_list(page_size=10,
+    current_page=1,
+    status="pending",
+    start_date="2017-01-01",
+    end_date="2018-01-25")
+
 btctrade.ethereum_withdraw_list(page_size=10,
     current_page=1,
     status="pending",
     start_date="2017-01-01",
     end_date="2018-01-25")
-btctrade.ethereum_create_withdraw(destination="0x27Db473751D76e2E9Af2b7A9b0199ef2c6Af838D",
-    fee="0.0001",
-    type="fast",
-    amount="0.1")
 btctrade.ethereum_deposit_list(page_size=10,
     current_page=1,
     status="confirmed",
     start_date="2017-01-01",
     end_date="2018-01-01")
-btctrade.litecoin_withdraw_fee()
+    
+    
 btctrade.litecoin_withdraw_list(page_size=10,
     current_page=1,
     status="pending",
     start_date="2017-01-01",
     end_date="2018-01-25")
-btctrade.litecoin_create_withdraw(destination="LhWeEXcVHpHxonqbLooKPNMzbmMetdHJdC",
-    fee="0.0001",
-    type="fast",
-    amount="0.1")
 btctrade.litecoin_deposit_list(page_size=10,
     current_page=1,
     status="confirmed",
