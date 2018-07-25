@@ -1,6 +1,7 @@
 import requests
 import json
-from .utils import check_args
+from .errors import ArgumentError
+from .utils import check_args, check_btc_address
 
 from .api import Base
 from .errors import ApiError
@@ -11,6 +12,8 @@ class PrivateApi(Base):
         self.token = token
         self.headers = {"Content-Type": "application/json",
                         "Authorization": "ApiToken "+self.token}
+
+    # Bitcoin API type
 
     def bitcoin_withdraw_fee(self, **params):
         """
@@ -51,6 +54,8 @@ class PrivateApi(Base):
                             "fee": str,
                             "fee_type":["fast","regular","slow"],
                             "amount": float})
+        if not check_btc_address(params["destination"]):
+            raise ArgumentError("Wrong BTC Address: {}".format(params["destination"]))
         return self.post_api("bitcoin","withdraw", **params)
 
     def bitcoin_deposit_list(self, **params):
@@ -70,6 +75,8 @@ class PrivateApi(Base):
                                                 "page_size": int,
                                                 "current_page": int})
         return self.get_api("bitcoin","deposits", **params)
+
+    # Market API type
 
     def orderbook_full(self, **params):
         """
@@ -94,6 +101,7 @@ class PrivateApi(Base):
     def create_order(self, **params):
         """
         https://apidocs.bitcointrade.com.br/#caf0a4c9-8485-4b14-d162-2a38cc8440a9
+        Creates an order
         Arguments:
         :param str currency: BTC/LTC/ETH/BCH
         :param float amount: amount of coins to buy/sell
@@ -111,6 +119,7 @@ class PrivateApi(Base):
     def get_user_orders(self, **params):
         """
         https://apidocs.bitcointrade.com.br/#989dcc17-e4fa-1262-fa35-589d47dd6b43
+        Get your users orders
         Optional arguments:
         :param str start_date: (ISO-8601 optional)
         :param str end_date: (ISO-8601 optional)
@@ -132,6 +141,7 @@ class PrivateApi(Base):
     def cancel_order(self, **params):
         """
         https://apidocs.bitcointrade.com.br/#8d1745de-d21e-1478-9dfc-dd6f2a381cd1
+        Cancel specified order
         Arguments:
         :param str id: order id
         """
@@ -141,6 +151,7 @@ class PrivateApi(Base):
     def estimated_price(self, **params):
         """
         https://apidocs.bitcointrade.com.br/#c3fbdb41-fdd6-108c-753d-5efcfeff7a7e
+        Calculates a price for market buying or selling specified amount
         Arguments:
         :param str currency: BTC/LTC/ETH/BCH
         :param float amount: amount of coins to buy/sell
@@ -150,4 +161,137 @@ class PrivateApi(Base):
                             "amount": float,
                             "type": ["buy", "sell"]})
         return self.get_api("market","estimated_price", **params)
+
+    #Wallets API type
+
+    def balance(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#5ef0088b-40ef-4668-2ac4-59e0b94e91f7
+        Returns available balances
+        """
+        return self.get_api("wallets","balance", **params)
+
+    # Ethereum API type (why arent all coins parameters in a single endpoint? \_("/)_/)
+
+    def ethereum_withdraw_fee(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#7c467985-794b-42a3-b356-1e6193a64322
+        Returns fee estimates for each confirmation speed category
+        """
+        return self.get_api("ethereum","withdraw/fee", **params)
+
+    def ethereum_withdraw_list(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#811ba44d-28dd-483f-ba2f-762974dca1d5
+        Returns users withdrawals list
+        Optional arguments:
+        :param str start_date: (ISO-8601 optional)
+        :param str end_date: (ISO-8601 optional)
+        :param str status: pending/confirmed/canceled
+        :param int page_size: (1-1000 optional)
+        :param int current_page: (numeric optional)
+        """
+        check_args(params, optional_parameters={"start_date": str,
+                                                "end_date": str,
+                                                "status": ["pending","confirmed","canceled"],
+                                                "page_size": int,
+                                                "current_page": int})
+        return self.get_api("ethereum","withdraw", **params)
+
+    def ethereum_create_withdraw(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#74fa9c02-d356-4ea8-bf9a-27947c94b58a
+        Withdraws ethereum to requested address
+        Arguments:
+        :param str destination: wallet address to process withdrawal
+        :param float fee: amount to pay for transaction fees
+        :param str fee_type: fast / regular / slow
+        :param float amount: amount to send
+        """
+        check_args(params, {"destination": str,
+                            "fee": str,
+                            "fee_type":["fast","regular","slow"],
+                            "amount": float})
+        return self.post_api("ethereum","withdraw", **params)
+
+    def ethereum_deposit_list(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#a91988b5-7fe2-4fed-82de-8c66116c2400
+        Returns users deposits list
+        Optional arguments:
+        :param str start_date: (ISO-8601 optional)
+        :param str end_date: (ISO-8601 optional)
+        :param str status: confirmation_pending / confirmed / canceled
+        :param int page_size: (1-1000 optional)
+        :param int current_page: (numeric optional)
+        """
+        check_args(params, optional_parameters={"start_date": str,
+                                                "end_date": str,
+                                                "status": ["confirmation_pending","confirmed","canceled"],
+                                                "page_size": int,
+                                                "current_page": int})
+        return self.get_api("ethereum","deposits", **params)
+
+    # Litecoin API type
+
+    def litecoin_withdraw_fee(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#e5890f51-4ae9-4c7a-bc87-de9d38f8aeaf
+        Returns fee estimates for each confirmation speed category
+        """
+        return self.get_api("litecoin","withdraw/fee", **params)
+
+    def litecoin_withdraw_list(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#23c9c7e3-2483-4c50-a7f5-5da33b65e815
+        Returns users withdrawals list
+        Optional arguments:
+        :param str start_date: (ISO-8601 optional)
+        :param str end_date: (ISO-8601 optional)
+        :param str status: pending/confirmed/canceled
+        :param int page_size: (1-1000 optional)
+        :param int current_page: (numeric optional)
+        """
+        check_args(params, optional_parameters={"start_date": str,
+                                                "end_date": str,
+                                                "status": ["pending","confirmed","canceled"],
+                                                "page_size": int,
+                                                "current_page": int})
+        return self.get_api("litecoin","withdraw", **params)
+
+    def litecoin_create_withdraw(self, **params):
+        """
+        https://api.bitcointrade.com.br/v1/litecoin/withdraw
+        Withdraws litecoin to requested address
+        Arguments:
+        :param str destination: wallet address to process withdrawal
+        :param float fee: amount to pay for transaction fees
+        :param str fee_type: fast / regular / slow
+        :param float amount: amount to send
+        """
+        check_args(params, {"destination": str,
+                            "fee": str,
+                            "fee_type":["fast","regular","slow"],
+                            "amount": float})
+        return self.post_api("litecoin","withdraw", **params)
+
+    def litecoin_deposit_list(self, **params):
+        """
+        https://apidocs.bitcointrade.com.br/#24250a34-37e1-48cd-9961-bb66e1e1f186
+        Returns users deposits list
+        Optional arguments:
+        :param str start_date: (ISO-8601 optional)
+        :param str end_date: (ISO-8601 optional)
+        :param str status: confirmation_pending / confirmed / canceled
+        :param int page_size: (1-1000 optional)
+        :param int current_page: (numeric optional)
+        """
+        check_args(params, optional_parameters={"start_date": str,
+                                                "end_date": str,
+                                                "status": ["confirmation_pending","confirmed","canceled"],
+                                                "page_size": int,
+                                                "current_page": int})
+        return self.get_api("litecoin","deposits", **params)
+
+
 

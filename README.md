@@ -18,26 +18,95 @@ Below you can see the available Bitcointrade API methods you can use:
 
 ```python
 import bitcointrade
-btctrade = bitcointrade.PublicApi()
+btctrade = bitcointrade.Api()
 
-btctrade.list_orderbook()
+btctrade.ticker("BTC")
+btctrade.orderbook("BTC")
+btctrade.trades("BTC",
+    start_time="2016-10-01T00:00:00-03:00",
+    end_time="2018-10-10T23:59:59-03:00",
+    page_size=100,
+    current_page=1)
 ```
 
 And the private Trade API:
 
 ```python
-from bitcointrade import PrivateApi
+import bitcointrade
+btctrade = bitcointrade.PrivateApi("<API_SECRET>")
 
-btctrade = PrivateApi(<API_ID>, <API_SECRET>)
-
-btctrade.list_orderbook(currency="BTC")
-btctrade.create_order(currency="BTC",amount="0.1",type="buy",subtype="market",unit_price="")
-btctrade.balance()
-btctrade.estimated_price(currency="BTC",amount="0.1","type"="buy")
 btctrade.bitcoin_withdraw_fee()
+btctrade.bitcoin_withdraw_list(page_size=10,
+    current_page=1,
+    status="pending",
+    start_date="2017-01-01",
+    end_date="2018-01-25")
+btctrade.bitcoin_create_withdraw(destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",
+    fee="0.0001",
+    type="fast",
+    amount="0.1")
+btctrade.bitcoin_deposit_list(page_size=10,
+    current_page=1,
+    status="confirmed",
+    start_date="2017-01-01",
+    end_date="2018-01-01")
+btctrade.orderbook_full(currency="BTC")
+btctrade.summary(currency="BTC")
+btctrade.create_order(currency="BTC",
+    amount="0.1",
+    type="buy",
+    subtype="market",
+    unit_price=10000.0)
+btctrade.get_user_orders(status="executed_completely",
+    start_date="2017-01-01",
+    end_date="2018-01-01",
+    currency="BTC",
+    type="buy",
+    page_size=100,
+    current_page=1)
+btctrade.cancel_order(id=<Order ID>)
+btctrade.estimated_price(currency="BTC",
+    amount="0.1",
+    type="buy")
+btctrade.balance()
 btctrade.ethereum_withdraw_fee()
-btctrade.bitcoin_create_withdraw(destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",fee="0.0001",type="fast",amount="0.1")
+btctrade.ethereum_withdraw_list(page_size=10,
+    current_page=1,
+    status="pending",
+    start_date="2017-01-01",
+    end_date="2018-01-25")
+btctrade.ethereum_create_withdraw(destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",
+    fee="0.0001",
+    type="fast",
+    amount="0.1")
+btctrade.ethereum_deposit_list(page_size=10,
+    current_page=1,
+    status="confirmed",
+    start_date="2017-01-01",
+    end_date="2018-01-01")
+btctrade.litecoin_withdraw_fee()
+btctrade.litecoin_withdraw_list(page_size=10,
+    current_page=1,
+    status="pending",
+    start_date="2017-01-01",
+    end_date="2018-01-25")
+btctrade.litecoin_create_withdraw(destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",
+    fee="0.0001",
+    type="fast",
+    amount="0.1")
+btctrade.litecoin_deposit_list(page_size=10,
+    current_page=1,
+    status="confirmed",
+    start_date="2017-01-01",
+    end_date="2018-01-01")
+```
 
+Please notice that almost all calls dont have explicit parameters,
+you can check the list of mandatory and optional parameters
+via BitcoinTrade [documentation](https://apidocs.bitcointrade.com.br/#5ef0088b-40ef-4668-2ac4-59e0b94e91f7)
+or by using:
+```python
+help(btctrade.estimated_price)
 ```
 
 ## Development
