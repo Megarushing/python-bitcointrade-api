@@ -19,9 +19,11 @@ class Base(object):
             r = response.json()
         except:
             response.raise_for_status()
+        if not ("message" in r and "data" in r):
+            raise ApiError("Invalid response: {}".format(r))
         if r["message"] != None:
             raise ApiError(r["message"])
-        return r
+        return r["data"]
 
     def request_api(self,method,api_type, action, **params):
         """

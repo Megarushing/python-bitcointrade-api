@@ -1,10 +1,7 @@
-import requests
-import json
 from .errors import ArgumentError
 from .utils import check_args, check_btc_address
 
 from .api import Base
-from .errors import ApiError
 
 class PrivateApi(Base):
     def __init__(self, token):
