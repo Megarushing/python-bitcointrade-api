@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v1/market/summary?currency=BTC
+  response:
+    body: {string: !!python/unicode '{"message":null,"data":[{"unit_price_24h":31307.98,"volume_24h":122.90437957,"max_price":31335.45,"min_price":29600.11,"last_transaction_unit_price":31196.99,"currency":"BTC"}]}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [keep-alive]
+      content-length: ['177']
+      content-type: [application/json; charset=utf-8]
+      date: ['Fri, 27 Jul 2018 20:52:13 GMT']
+      etag: ['W/"b1-Mnwl5zzgDCAImaxkcbJOO6AdqyM:dtagent10147180705145128HQ6X"']
+      x-response-time: [133.573ms]
+    status: {code: 200, message: OK}
+version: 1

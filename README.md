@@ -42,7 +42,6 @@ btctrade.bitcoin_create_withdraw(destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG
 btctrade.bitcoin_deposit_list()
 btctrade.orderbook_full(currency="BTC")
 btctrade.summary(currency="BTC")
-btctrade.create_order()
 btctrade.create_order(currency="BTC",
     amount=0.1,
     type="buy",

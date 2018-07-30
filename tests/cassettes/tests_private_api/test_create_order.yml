@@ -1,0 +1,26 @@
+interactions:
+- request:
+    body: !!python/unicode '{"currency": "BTC", "amount": 0.1, "type": "sell", "unit_price":
+      70000.0, "subtype": "limited"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Length: ['95']
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: POST
+    uri: https://api.bitcointrade.com.br/v1/market/create_order
+  response:
+    body: {string: !!python/unicode '{"message":null,"data":{"id":"XXXXXXXXXXXXXXXXXXXXXXXXXX","code":"XXXXXXXXX","type":2,"unit_price":70000,"user_code":"XXXXXXXXX","currency_code":"BTC","amount":0.1}}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [keep-alive]
+      content-length: ['183']
+      content-type: [application/json; charset=utf-8]
+      date: ['Fri, 27 Jul 2018 20:51:57 GMT']
+      etag: ['W/"b7-0ogYrjcnF0QptjKWMvlan8BVs0o:dtagent10147180705145128HQ6X"']
+      x-response-time: [667.483ms]
+    status: {code: 200, message: OK}
+version: 1

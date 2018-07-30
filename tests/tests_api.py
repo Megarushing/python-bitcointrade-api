@@ -2,7 +2,6 @@ import tests
 import unittest
 import bitcointrade
 
-
 class ApiTestCase(unittest.TestCase):
     def setUp(self):
         self.api = bitcointrade.Api()
@@ -10,14 +9,14 @@ class ApiTestCase(unittest.TestCase):
     @tests.vcr.use_cassette
     def test_ticker(self):
         response = self.api.ticker("BTC")
-        assert 'ticker' in response
-        assert 'high' in response['ticker']
-        assert 'date' in response['ticker']
-        assert 'sell' in response['ticker']
-        assert 'vol' in response['ticker']
-        assert 'last' in response['ticker']
-        assert 'low' in response['ticker']
-        assert 'buy' in response['ticker']
+        assert 'high' in response
+        assert 'low' in response
+        assert 'volume' in response
+        assert 'trades_quantity' in response
+        assert 'last' in response
+        assert 'sell' in response
+        assert 'buy' in response
+        assert 'date' in response
 
     @tests.vcr.use_cassette
     def test_orderbook(self):
@@ -30,10 +29,6 @@ class ApiTestCase(unittest.TestCase):
     @tests.vcr.use_cassette
     def test_trades(self):
         response = self.api.trades("BTC")
-        assert 'date' in response[0]
-        assert 'price' in response[0]
-        assert 'amount' in response[0]
-        assert 'tid' in response[0]
-        assert 'type' in response[0]
-
-
+        assert 'pagination' in response
+        assert 'trades' in response
+        assert len(response['trades']) > 0

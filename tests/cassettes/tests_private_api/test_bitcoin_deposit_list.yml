@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v1/bitcoin/deposits
+  response:
+    body: {string: !!python/unicode '{"message":null,"data":{"pagination":{"total_pages":1,"current_page":1,"page_size":20,"registers_count":2},"deposits":[{"code":"Tk8GrO25f","hash":"905CC00B9A02A295B0067B2EF8526AB805ED6A00F7A28E5A298B15505A1B5837","amount":0.02233445,"status":"confirmed","create_date":"2018-03-15T02:18:54.377Z","confirmation_date":"2018-03-15T02:48:02.060Z"},{"code":"BJI5i84t","hash":"B12BA491155D9A6AF871F13E00EDBB9BFD86E0E6008A28695BF4D29DA296193F","amount":0.1206836,"status":"confirmed","create_date":"2018-02-12T20:46:06.317Z","confirmation_date":"2018-02-12T21:27:17.973Z"}]}}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [keep-alive]
+      content-length: ['4575']
+      content-type: [application/json; charset=utf-8]
+      date: ['Fri, 27 Jul 2018 20:51:52 GMT']
+      etag: ['W/"11df-ct+nij5RfyKnPmTCLLuUZuxe9uo:dtagent10147180705145128HQ6X"']
+      x-response-time: [257.081ms]
+    status: {code: 200, message: OK}
+version: 1

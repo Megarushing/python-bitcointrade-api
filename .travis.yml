@@ -7,5 +7,5 @@ install:
   - pip install -r requirements-development.txt
   - pip install codeclimate-test-reporter
 script:
-  - coverage erase && nosetests -dsv --with-yanc --with-coverage --cover-package mercadobitcoin
+  - coverage erase && nosetests -dsv --with-yanc --with-coverage --cover-package bitcointrade
   - codeclimate-test-reporter

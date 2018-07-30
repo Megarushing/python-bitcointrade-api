@@ -34,8 +34,8 @@ setup(
     author = 'Leandro Trindade',
     author_email = 'just4span@gmail.com',
     url = 'https://github.com/Megarushing/bitcointrade-python-api.git',
-    download_url = 'https://github.com/Megarushing/bitcointrade-python-api/tarball/0.6.0',
-    keywords = ['bitcoin', 'litecoin', 'bitcointrade', 'trade', 'orderbook'],
+    download_url = 'https://github.com/Megarushing/python-bitcointrade-api/tarball/0.6.0',
+    keywords = ['bitcoin', 'litecoin', 'ethereum', 'bitcointrade', 'trade', 'orderbook', 'ticker'],
     install_requires=INSTALL_REQUIREMENTS,
     classifiers = [
         'Development Status :: 4 - Beta',

@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v1/ethereum/deposits
+  response:
+    body: {string: !!python/unicode '{"message":null,"data":{"pagination":{"total_pages":1,"current_page":1,"page_size":20,"registers_count":2},"deposits":[{"code":"T6IRSiyAz","hash":"0x37EA669B019B7B2CBA395BEC6C3545A04F1CAD42385EA49DFB9F9D7D37DDD00B","amount":1.5,"status":"confirmed","create_date":"2018-05-08T22:30:23.150Z","confirmation_date":"2018-05-08T22:32:01.883Z"},{"code":"S1KcT5Evz","hash":"0x8B57D786775C89DFB7FEE8DA869CC6D6375DEA196CA6CE3AA0610598919E84A1","amount":3.1,"status":"confirmed","create_date":"2017-12-13T23:04:48.887Z","confirmation_date":"2017-12-13T23:06:02.373Z"}]}}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [keep-alive]
+      content-length: ['845']
+      content-type: [application/json; charset=utf-8]
+      date: ['Fri, 27 Jul 2018 20:52:00 GMT']
+      etag: ['W/"4c7-eX+3GyvYkuFWI+/QP4ZTDhGpCsE:dtagent10147180705145128HQ6X"']
+      x-response-time: [66.404ms]
+    status: {code: 200, message: OK}
+version: 1

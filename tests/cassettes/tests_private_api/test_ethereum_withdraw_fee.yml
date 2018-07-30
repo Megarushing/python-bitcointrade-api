@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v1/ethereum/withdraw/fee
+  response:
+    body: {string: !!python/unicode '{"message":null,"data":[{"name":"fast","amount":0.0000714},{"name":"regular","amount":0.0000567},{"name":"slow","amount":0.0000462}]}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [keep-alive]
+      content-length: ['133']
+      content-type: [application/json; charset=utf-8]
+      date: ['Fri, 27 Jul 2018 20:52:00 GMT']
+      etag: ['W/"85-6bn3Xt7UWGvLg47FJ+cPskN4FZQ:dtagent10147180705145128HQ6X"']
+      x-response-time: [94.389ms]
+    status: {code: 200, message: OK}
+version: 1

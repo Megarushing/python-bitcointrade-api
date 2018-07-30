@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v1/market/user_orders/list?currency=BTC
+  response:
+    body: {string: !!python/unicode '{"message":null,"data":{"pagination":{"total_pages":1,"current_page":1,"page_size":20,"registers_count":1},"orders":[{"id":"DWuRFGZBMCXAnb9cCPMWH+KRpHYuEMxMFwoZ9yZmqGC=","code":"Tasd9TPEF","currency_code":"BTC","type":"sell","subtype":"limited","requested_amount":0.1,"executed_amount":0,"remaining_amount":0.1,"remaining_price":7000,"unit_price":70000,"total_price":0,"status":"waiting","update_date":"2018-06-07T20:51:57.387Z","create_date":"2018-06-07T20:51:57.387Z"},{"id":"wToMD3CdFbcYEkneHwfwEPqDhLyX+becLUD7Mbxxbhq=","code":"T56tCMthQ","currency_code":"BTC","type":"buy","subtype":"market","requested_amount":0.3051005,"executed_amount":0.3051005,"remaining_amount":0,"remaining_price":0,"unit_price":26841.769645,"total_price":4157.1,"status":"executed_completely","update_date":"2018-05-23T21:55:00.087Z","create_date":"2018-05-23T21:54:59.923Z"}]}}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [keep-alive]
+      content-length: ['2781']
+      content-type: [application/json; charset=utf-8]
+      date: ['Fri, 27 Jul 2018 20:52:02 GMT']
+      etag: ['W/"1e65-OcP1dTS1MgFGwHD7NxtrCzotStQ:dtagent10147180705145128HQ6X"']
+      x-response-time: [180.196ms]
+    status: {code: 200, message: OK}
+version: 1

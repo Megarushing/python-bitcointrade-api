@@ -11,7 +11,7 @@ def build_path(function):
 vcr = vcr.config.VCR(
   func_path_generator=build_path,
   cassette_library_dir='tests/cassettes',
-  match_on=['uri', 'method'],
+  match_on=['host','query','path','method'],
   decode_compressed_response=True,
   record_mode='once'
 )

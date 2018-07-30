@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v1/litecoin/withdraw/fee
+  response:
+    body: {string: !!python/unicode '{"message":null,"data":[{"name":"fast","amount":0.00051328},{"name":"regular","amount":0.00038496},{"name":"slow","amount":0.00025664}]}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [keep-alive]
+      content-length: ['136']
+      content-type: [application/json; charset=utf-8]
+      date: ['Fri, 27 Jul 2018 20:52:04 GMT']
+      etag: ['W/"88-hnPYeowBlIFUF/mQVSxhD7uOCLk:dtagent10147180705145128HQ6X"']
+      x-response-time: [81.681ms]
+    status: {code: 200, message: OK}
+version: 1
