@@ -1,5 +1,5 @@
 from .errors import ArgumentError
-from .utils import check_args, check_btc_address
+from .utils import check_args
 
 from .api import Base
 
@@ -51,8 +51,6 @@ class PrivateApi(Base):
                             "fee": float,
                             "fee_type":["fast","regular","slow"],
                             "amount": float})
-        if not check_btc_address(params["destination"]):
-            raise ArgumentError("Wrong BTC Address: {}".format(params["destination"]))
         return self.post_api("bitcoin","withdraw", **params)
 
     def bitcoin_deposit_list(self, **params):
