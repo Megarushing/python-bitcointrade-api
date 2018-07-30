@@ -48,7 +48,7 @@ class PrivateApi(Base):
         :param float amount: amount to send
         """
         check_args(params, {"destination": str,
-                            "fee": str,
+                            "fee": float,
                             "fee_type":["fast","regular","slow"],
                             "amount": float})
         if not check_btc_address(params["destination"]):
@@ -206,7 +206,7 @@ class PrivateApi(Base):
         :param float amount: amount to send
         """
         check_args(params, {"destination": str,
-                            "fee": str,
+                            "fee": float,
                             "fee_type":["fast","regular","slow"],
                             "amount": float})
         return self.post_api("ethereum","withdraw", **params)
@@ -267,7 +267,7 @@ class PrivateApi(Base):
         :param float amount: amount to send
         """
         check_args(params, {"destination": str,
-                            "fee": str,
+                            "fee": float,
                             "fee_type":["fast","regular","slow"],
                             "amount": float})
         return self.post_api("litecoin","withdraw", **params)

@@ -1,0 +1,25 @@
+interactions:
+- request:
+    body: !!python/unicode '{"destination":"1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG","fee":0.0001,"fee_type":"slow","amount":0.1}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Length: ['95']
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: POST
+    uri: https://api.bitcointrade.com.br/v1/bitcoin/withdraw
+  response:
+    body: {string: !!python/unicode '{"message":null,"data":{"code":"HJzpwYDrz","origin_address":"1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG","destination_address":"1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG","amount":0.1,"miner_fee":0.0001,"miner_fee_type":"slow","tax_index":0,"tax_index_calculated":0,"tax_amount":0,"status":"pending","create_date":"2018-01-25T16:37:15.443Z","update_date":"2018-01-25T16:37:15.017Z","transaction_id":null,"link":null}}'}
+    headers:
+      access-control-allow-origin: ['*']
+      connection: [keep-alive]
+      content-length: ['183']
+      content-type: [application/json; charset=utf-8]
+      date: ['Fri, 27 Jul 2018 20:51:57 GMT']
+      etag: ['W/"b7-0ogYrjcnF0QptjKWMvlan8BVs0o:dtagent10147180705145128HQ6X"']
+      x-response-time: [667.483ms]
+    status: {code: 200, message: OK}
+version: 1

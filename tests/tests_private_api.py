@@ -33,14 +33,14 @@ class PrivateApiTestCase(unittest.TestCase):
         response = self.api.bitcoin_withdraw_list()
         assert "messages" in response
 
-    # @tests.vcr.use_cassette
-    # def test_bitcoin_create_withdraw(self):
-    #     response = self.api.bitcoin_create_withdraw(
-    #         destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",
-    #         fee=0.0001,
-    #         type="fast",
-    #         amount=0.1)
-    #     assert "messages" in response
+    @tests.vcr.use_cassette
+    def test_bitcoin_create_withdraw(self):
+        response = self.api.bitcoin_create_withdraw(
+            destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",
+            fee=0.0001,
+            fee_type="slow",
+            amount=0.1)
+        assert "messages" in response
 
     @tests.vcr.use_cassette
     def test_bitcoin_deposit_list(self):
@@ -57,14 +57,14 @@ class PrivateApiTestCase(unittest.TestCase):
         response = self.api.ethereum_withdraw_list()
         assert "messages" in response
 
-    # @tests.vcr.use_cassette
-    # def test_ethereum_create_withdraw(self):
-    #     response = self.api.ethereum_create_withdraw(
-    #         destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",
-    #         fee=0.0001,
-    #         type="fast",
-    #         amount=0.1)
-    #     assert "messages" in response
+    @tests.vcr.use_cassette
+    def test_ethereum_create_withdraw(self):
+        response = self.api.ethereum_create_withdraw(
+            destination="0x27Db473751D76e2E9Af2b7A9b0199ef2c6Af838D",
+            fee=0.0001,
+            fee_type="slow",
+            amount=0.1)
+        assert "messages" in response
 
     @tests.vcr.use_cassette
     def test_ethereum_deposit_list(self):
@@ -81,14 +81,14 @@ class PrivateApiTestCase(unittest.TestCase):
         response = self.api.litecoin_withdraw_list()
         assert "messages" in response
 
-    # @tests.vcr.use_cassette
-    # def test_litecoin_create_withdraw(self):
-    #     response = self.api.litecoin_create_withdraw(
-    #         destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",
-    #         fee=0.0001,
-    #         type="fast",
-    #         amount=0.1)
-    #     assert "messages" in response
+    @tests.vcr.use_cassette
+    def test_litecoin_create_withdraw(self):
+        response = self.api.litecoin_create_withdraw(
+            destination="LhWeEXcVHpHxonqbLooKPNMzbmMetdHJdC",
+            fee=0.0001,
+            fee_type="slow",
+            amount=0.1)
+        assert "messages" in response
 
     @tests.vcr.use_cassette
     def test_litecoin_deposit_list(self):

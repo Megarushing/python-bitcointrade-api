@@ -13,5 +13,5 @@ vcr = vcr.config.VCR(
   cassette_library_dir='tests/cassettes',
   match_on=['host','query','path','method'],
   decode_compressed_response=True,
-  record_mode='once'
+  record_mode='none'
 )
