@@ -16,7 +16,7 @@ You can also install directly from the GitHub repository to have the newest feat
 
 ```bash
 git clone https://github.com/Megarushing/python-bitcointrade-api.git
-cd bitcointrade-python-api
+cd python-bitcointrade-api
 python setup.py install
 ```
 
