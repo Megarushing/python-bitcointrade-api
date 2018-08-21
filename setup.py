@@ -21,20 +21,20 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+import setuptools
 from distutils.core import setup
-
 
 INSTALL_REQUIREMENTS = ['requests']
 
 setup(
     name = 'bitcointrade',
     description = 'A Python wrapper for Bitcointrade API',
-    version = '0.6.0',
+    version = '0.6.2',
     packages = ['bitcointrade'],
     author = 'Leandro Trindade',
     author_email = 'just4span@gmail.com',
-    url = 'https://github.com/Megarushing/bitcointrade-python-api.git',
-    download_url = 'https://github.com/Megarushing/python-bitcointrade-api/tarball/0.6.0',
+    url = 'https://github.com/Megarushing/python-bitcointrade-api.git',
+    download_url = 'https://github.com/Megarushing/python-bitcointrade-api/tarball/0.6.2',
     keywords = ['bitcoin', 'litecoin', 'ethereum', 'bitcointrade', 'trade', 'orderbook', 'ticker'],
     install_requires=INSTALL_REQUIREMENTS,
     classifiers = [
@@ -48,7 +48,7 @@ setup(
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Utilities'
     ]

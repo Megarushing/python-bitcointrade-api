@@ -1,8 +1,18 @@
+[![PyPI](https://img.shields.io/pypi/v/bitcointrade.svg)](https://pypi.python.org/pypi/bitcointrade)
+
 # bitcointrade python api
 
 A Python wrapper for Bitcointrade API. Forked project from python-mercadobitcoin by Alan Fachini (alfakini@gmail.com)
 
 ## Installation
+
+Directly from [PyPI](https://pypi.python.org/pypi/bitcointrade):
+
+```bash
+pip install bitcointrade
+```
+
+You can also install directly from the GitHub repository to have the newest features by running:
 
 ```bash
 git clone https://github.com/Megarushing/python-bitcointrade-api.git
