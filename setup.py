@@ -29,12 +29,12 @@ INSTALL_REQUIREMENTS = ['requests']
 setup(
     name = 'bitcointrade',
     description = 'A Python wrapper for Bitcointrade API',
-    version = '0.6.2',
+    version = '0.7.0',
     packages = ['bitcointrade'],
     author = 'Leandro Trindade',
     author_email = 'just4span@gmail.com',
     url = 'https://github.com/Megarushing/python-bitcointrade-api.git',
-    download_url = 'https://github.com/Megarushing/python-bitcointrade-api/tarball/0.6.2',
+    download_url = 'https://github.com/Megarushing/python-bitcointrade-api/tarball/0.7.0',
     keywords = ['bitcoin', 'litecoin', 'ethereum', 'bitcointrade', 'trade', 'orderbook', 'ticker'],
     install_requires=INSTALL_REQUIREMENTS,
     classifiers = [

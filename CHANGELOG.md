@@ -1,7 +1,10 @@
 # bitcointrade Log of Changes
 
+## Version `0.7.0`
+- Switched to API V2
+
 ## Version `0.6.0`
-- Forked version, BitcoinTrade API V1 supportt
+- Forked version, BitcoinTrade API V1 support
 
 ## Version `0.5.0`
 

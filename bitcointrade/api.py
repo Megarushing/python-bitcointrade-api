@@ -9,7 +9,7 @@ class Base(object):
 
     def __init__(self):
         self.host = "api.bitcointrade.com.br"
-        self.api_version = "v1"
+        self.api_version = "v2"
         self.token = None
         self.headers = {"Content-Type": "application/json"}
         self.timeout = TIMEOUT
@@ -88,7 +88,7 @@ class Base(object):
 class Api(Base):
     """Coin market informations."""
 
-    def get_api(self, api_type, coin, action, **params):
+    def get_api(self, api_type, pair, action, **params):
         """
         Returns decoded json dict for requested action.
         :param str api_type: The requested API action
@@ -100,29 +100,29 @@ class Api(Base):
         url = "https://%s/%s/%s/%s/%s" % (self.host,
                                        self.api_version,
                                        api_type,
-                                       coin.upper(),
+                                       pair.upper(),
                                        action)
 
         response = requests.get(url,params=filtered,timeout=self.timeout,headers=self.headers)
         return self._check_response(response)
 
-    def ticker(self,coin):
+    def ticker(self,pair):
         """
-        https://apidocs.bitcointrade.com.br/#8e6f6b73-b2f8-c03a-9d60-a0159f2c6ce0
+        https://apidocs.bitcointrade.com.br/#eb1738f6-a15a-4c44-aedf-abcb81657bf7
         Returns a summary of last 24 hour trade period.
         """
-        return self.get_api("public",coin,'ticker')
+        return self.get_api("public",pair,'ticker')
 
-    def orderbook(self,coin):
+    def orderbook(self,pair):
         """
-        https://apidocs.bitcointrade.com.br/#dc3695f5-6129-e35c-153d-c629aee8fd48
+        https://apidocs.bitcointrade.com.br/#cf269fa1-717a-402e-b6f1-ef47926738af
         Returns the orderbook for chosen coin.
         """
-        return self.get_api("public",coin,'orders')
+        return self.get_api("public",pair,'orders')
 
-    def trades(self,coin,**params):
+    def trades(self,pair,**params):
         """
-        https://apidocs.bitcointrade.com.br/#9fe41816-3d20-e53e-9273-643c95279dc4
+        https://apidocs.bitcointrade.com.br/#e2e31936-9ae4-4646-b918-a4c21829b46d
         Returns list of trades that happened during search period.
         Possible arguments:
         :param str start_time: (ISO-8601 optional)
@@ -132,4 +132,4 @@ class Api(Base):
         """
         check_args(params, optional_parameters={"start_time": str, "end_time": str,
                             "page_size": int, "current_page": int})
-        return self.get_api("public",coin,'trades',**params)
+        return self.get_api("public",pair,'trades',**params)
