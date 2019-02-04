@@ -35,7 +35,7 @@ setup(
     author_email = 'just4span@gmail.com',
     url = 'https://github.com/Megarushing/python-bitcointrade-api.git',
     download_url = 'https://github.com/Megarushing/python-bitcointrade-api/tarball/0.7.0',
-    keywords = ['bitcoin', 'litecoin', 'ethereum', 'bitcointrade', 'trade', 'orderbook', 'ticker'],
+    keywords = ['bitcoin', 'litecoin', 'ethereum', 'bitcoin cash','bitcointrade', 'trade', 'orderbook', 'cryptocurrency','ticker'],
     install_requires=INSTALL_REQUIREMENTS,
     classifiers = [
         'Development Status :: 4 - Beta',
