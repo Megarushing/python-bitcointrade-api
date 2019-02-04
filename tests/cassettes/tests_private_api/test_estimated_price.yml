@@ -9,16 +9,38 @@ interactions:
       Content-Type: [application/json]
       User-Agent: [python-requests/2.19.1]
     method: GET
-    uri: https://api.bitcointrade.com.br/v1/market/estimated_price?type=buy&amount=0.1&currency=BTC
+    uri: https://api.bitcointrade.com.br/v2/market/estimated_price?type=buy&pair=BRLBTC&amount=0.1
   response:
-    body: {string: !!python/unicode '{"message":null,"data":{"price":31152.647975}}'}
+    body: {string: '{"message":null,"data":{"price":12722.64631043257}}'}
     headers:
       access-control-allow-origin: ['*']
       connection: [keep-alive]
-      content-length: ['46']
+      content-length: ['51']
       content-type: [application/json; charset=utf-8]
-      date: ['Fri, 27 Jul 2018 20:51:59 GMT']
-      etag: ['W/"2e-NPR/eetMiK4g2hnAIJOXkeF2K8A:dtagent10147180705145128HQ6X"']
-      x-response-time: [286.043ms]
+      date: ['Mon, 04 Feb 2019 14:22:35 GMT']
+      etag: [W/"33-UVQC2F1eZZqSxr5e0LdrWWz77kM"]
+      x-response-time: [226.703ms]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v2/market/estimated_price?pair=BRLBTC&amount=0.1&type=buy
+  response:
+    body: {string: '{"message":null,"data":{"price":12706.480304955527}}'}
+    headers:
+      Access-Control-Allow-Origin: ['*']
+      Connection: [keep-alive]
+      Content-Length: ['52']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Mon, 04 Feb 2019 14:22:56 GMT']
+      ETag: [W/"34-Lx/ql823nyHZWGayCuUUh6uVwq0"]
+      X-Response-Time: [52.085ms]
     status: {code: 200, message: OK}
 version: 1

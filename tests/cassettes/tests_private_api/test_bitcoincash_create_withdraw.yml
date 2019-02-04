@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: !!python/unicode '{"fee_type": "slow", "destination": "0x27Db473751D76e2E9Af2b7A9b0199ef2c6Af838D",
+    body: !!python/unicode '{"fee_type": "slow", "destination": "1Dz46MhtvLH4Qd7RxXMxtMS8zZTBe5qiDj",
       "amount": 0.1}'
     headers:
       Accept: ['*/*']
@@ -11,9 +11,9 @@ interactions:
       Content-Type: [application/json]
       User-Agent: [python-requests/2.19.1]
     method: POST
-    uri: https://api.bitcointrade.com.br/v2/ethereum/withdraw
+    uri: https://api.bitcointrade.com.br/v2/bitcoincash/withdraw
   response:
-    body: {string: !!python/unicode '{"message":null,"data":{"code":"XXXXXXXXX","origin_address":"0x6bdDbD1D6bbE36aFF9A1dFf1E4067148425A76d9","destination_address":"0x27Db473751D76e2E9Af2b7A9b0199ef2c6Af838D","amount":0.09874,"miner_fee":0.00126,"miner_fee_type":"slow","tax_index":0,"tax_index_calculated":0,"tax_amount":0,"status":"pending","create_date":"2019-02-04T15:58:51.517Z","update_date":"2019-02-04T15:58:51.857Z","transaction_id":null,"currency_code":"ETH","link":null}}'}
+    body: {string: !!python/unicode '{"message":null,"data":{"code":"XXXXXXXXX","origin_address":"1Dz46MhtvLH4Qd7RxXMxtMS8zZTBe5qiDj","destination_address":"1Dz46MhtvLH4Qd7RxXMxtMS8zZTBe5qiDj","amount":0.09874,"miner_fee":0.00126,"miner_fee_type":"slow","tax_index":0,"tax_index_calculated":0,"tax_amount":0,"status":"pending","create_date":"2019-02-04T15:58:51.517Z","update_date":"2019-02-04T15:58:51.857Z","transaction_id":null,"currency_code":"BCH","link":null}}'}
     headers:
       access-control-allow-origin: ['*']
       connection: [keep-alive]

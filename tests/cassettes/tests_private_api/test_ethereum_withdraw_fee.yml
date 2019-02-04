@@ -9,16 +9,38 @@ interactions:
       Content-Type: [application/json]
       User-Agent: [python-requests/2.19.1]
     method: GET
-    uri: https://api.bitcointrade.com.br/v1/ethereum/withdraw/fee
+    uri: https://api.bitcointrade.com.br/v2/ethereum/withdraw/fee
   response:
-    body: {string: !!python/unicode '{"message":null,"data":[{"name":"fast","amount":0.0000714},{"name":"regular","amount":0.0000567},{"name":"slow","amount":0.0000462}]}'}
+    body: {string: '{"message":null,"data":[{"name":"fast","amount":0.00336},{"name":"regular","amount":0.0021},{"name":"slow","amount":0.00126}]}'}
     headers:
       access-control-allow-origin: ['*']
       connection: [keep-alive]
-      content-length: ['133']
+      content-length: ['126']
       content-type: [application/json; charset=utf-8]
-      date: ['Fri, 27 Jul 2018 20:52:00 GMT']
-      etag: ['W/"85-6bn3Xt7UWGvLg47FJ+cPskN4FZQ:dtagent10147180705145128HQ6X"']
-      x-response-time: [94.389ms]
+      date: ['Mon, 04 Feb 2019 14:22:36 GMT']
+      etag: [W/"7e-S43ePyvSZ/vXH+4OAfkh5k+UWGY"]
+      x-response-time: [20.148ms]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v2/ethereum/withdraw/fee
+  response:
+    body: {string: '{"message":null,"data":[{"name":"fast","amount":0.00336},{"name":"regular","amount":0.0021},{"name":"slow","amount":0.00126}]}'}
+    headers:
+      Access-Control-Allow-Origin: ['*']
+      Connection: [keep-alive]
+      Content-Length: ['126']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Mon, 04 Feb 2019 14:22:57 GMT']
+      ETag: [W/"7e-S43ePyvSZ/vXH+4OAfkh5k+UWGY"]
+      X-Response-Time: [30.889ms]
     status: {code: 200, message: OK}
 version: 1

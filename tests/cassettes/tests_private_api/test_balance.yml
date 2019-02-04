@@ -9,16 +9,38 @@ interactions:
       Content-Type: [application/json]
       User-Agent: [python-requests/2.19.1]
     method: GET
-    uri: https://api.bitcointrade.com.br/v1/wallets/balance
+    uri: https://api.bitcointrade.com.br/v2/wallets/balance
   response:
-    body: {string: !!python/unicode '{"message":null,"data":[{"available_amount":9.72,"locked_amount":0,"currency_code":"BRL"},{"available_amount":0.42424242,"locked_amount":0.1,"currency_code":"BTC"},{"available_amount":0,"locked_amount":0,"currency_code":"ETH"},{"available_amount":0,"locked_amount":0.42424242,"currency_code":"LTC"}]}'}
+    body: {string: '{"message":null,"data":[{"available_amount":10000.01,"currency_code":"BRL","locked_amount":0},{"available_amount":0,"currency_code":"BTC","locked_amount":0},{"available_amount":0.1,"currency_code":"ETH","locked_amount":0},{"available_amount":1,"currency_code":"LTC","locked_amount":0},{"available_amount":0.1,"currency_code":"BCH","locked_amount":0}]}'}
     headers:
       access-control-allow-origin: ['*']
       connection: [keep-alive]
-      content-length: ['291']
+      content-length: ['351']
       content-type: [application/json; charset=utf-8]
-      date: ['Fri, 27 Jul 2018 20:51:51 GMT']
-      etag: ['W/"123-y7qzs3VBOMMA2Z2Fi4Q6fG3RS40:dtagent10147180705145128HQ6X"']
-      x-response-time: [219.240ms]
+      date: ['Mon, 04 Feb 2019 14:22:29 GMT']
+      etag: [W/"15f-jQEfaBx4gTAE23T4ux0dBn5hy3k"]
+      x-response-time: [21.691ms]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v2/wallets/balance
+  response:
+    body: {string: '{"message":null,"data":[{"available_amount":10000.01,"currency_code":"BRL","locked_amount":0},{"available_amount":0,"currency_code":"BTC","locked_amount":0},{"available_amount":0.1,"currency_code":"ETH","locked_amount":0},{"available_amount":1,"currency_code":"LTC","locked_amount":0},{"available_amount":0.1,"currency_code":"BCH","locked_amount":0}]}'}
+    headers:
+      Access-Control-Allow-Origin: ['*']
+      Connection: [keep-alive]
+      Content-Length: ['351']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Mon, 04 Feb 2019 14:22:50 GMT']
+      ETag: [W/"15f-jQEfaBx4gTAE23T4ux0dBn5hy3k"]
+      X-Response-Time: [35.836ms]
     status: {code: 200, message: OK}
 version: 1

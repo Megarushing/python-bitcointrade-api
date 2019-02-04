@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: !!python/unicode '{"id": "XXXXXXXXXXXXXXXXXXXXXXXXXX"}'
+    body: !!python/unicode '{"id": "XXXXXX"}'
     headers:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
@@ -10,7 +10,7 @@ interactions:
       Content-Type: [application/json]
       User-Agent: [python-requests/2.19.1]
     method: DELETE
-    uri: https://api.bitcointrade.com.br/v1/market/user_orders
+    uri: https://api.bitcointrade.com.br/v2/market/user_orders
   response:
     body: {string: !!python/unicode '{"message":null,"data":null}'}
     headers:
@@ -18,8 +18,8 @@ interactions:
       connection: [keep-alive]
       content-length: ['28']
       content-type: [application/json; charset=utf-8]
-      date: ['Fri, 27 Jul 2018 20:51:56 GMT']
-      etag: ['W/"1c-Hbysd2imcROkNdtRTI32Lakndko:dtagent10147180705145128HQ6X"']
-      x-response-time: [664.199ms]
+      date: ['Mon, 04 Feb 2019 14:32:30 GMT']
+      etag: [W/"1c-Hbysd2imcROkNdtRTI32Lakndko"]
+      x-response-time: [108.447ms]
     status: {code: 200, message: OK}
 version: 1

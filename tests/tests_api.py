@@ -8,7 +8,7 @@ class ApiTestCase(unittest.TestCase):
 
     @tests.vcr.use_cassette
     def test_ticker(self):
-        response = self.api.ticker("BTC")
+        response = self.api.ticker("BRLBTC")
         assert type(response) == dict
         assert 'high' in response
         assert 'low' in response
@@ -21,7 +21,7 @@ class ApiTestCase(unittest.TestCase):
 
     @tests.vcr.use_cassette
     def test_orderbook(self):
-        response = self.api.orderbook("BTC")
+        response = self.api.orderbook("BRLBTC")
         assert type(response) == dict
         assert "asks" in response
         assert type(response["asks"]) == list
@@ -35,7 +35,7 @@ class ApiTestCase(unittest.TestCase):
 
     @tests.vcr.use_cassette
     def test_trades(self):
-        response = self.api.trades("BTC")
+        response = self.api.trades("BRLBTC")
         assert type(response) == dict
         assert "trades" in response
         assert type(response["trades"]) == list

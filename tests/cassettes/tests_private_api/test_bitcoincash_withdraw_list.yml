@@ -9,17 +9,17 @@ interactions:
       Content-Type: [application/json]
       User-Agent: [python-requests/2.19.1]
     method: GET
-    uri: https://api.bitcointrade.com.br/v2/market/summary?pair=BRLBTC
+    uri: https://api.bitcointrade.com.br/v2/bitcoincash/withdraw
   response:
-    body: {string: '{"message":null,"data":[{"last_transaction_unit_price":12615,"max_price":12780,"min_price":12400.05,"unit_price_24h":12727.04,"volume_24h":56.78407123,"pair":"BRLBTC"}]}'}
+    body: {string: '{"message":null,"data":{"pagination":{"current_page":1,"page_size":20,"registers_count":0,"total_pages":1},"withdrawals":[]}}'}
     headers:
       access-control-allow-origin: ['*']
       connection: [keep-alive]
-      content-length: ['169']
+      content-length: ['125']
       content-type: [application/json; charset=utf-8]
-      date: ['Mon, 04 Feb 2019 14:22:43 GMT']
-      etag: [W/"a9-vrPIEhHrpXoi3zQ0vaaqmDFgvU0"]
-      x-response-time: [333.184ms]
+      date: ['Mon, 04 Feb 2019 14:22:33 GMT']
+      etag: [W/"7d-G9f01EAAZFOo6/VML6cpDpM1HO4"]
+      x-response-time: [29.925ms]
     status: {code: 200, message: OK}
 - request:
     body: null
@@ -31,16 +31,16 @@ interactions:
       Content-Type: [application/json]
       User-Agent: [python-requests/2.19.1]
     method: GET
-    uri: https://api.bitcointrade.com.br/v2/market/summary?pair=BRLBTC
+    uri: https://api.bitcointrade.com.br/v2/bitcoincash/withdraw
   response:
-    body: {string: '{"message":null,"data":[{"last_transaction_unit_price":12615,"max_price":12780,"min_price":12400.05,"unit_price_24h":12727.04,"volume_24h":56.78407123,"pair":"BRLBTC"}]}'}
+    body: {string: '{"message":null,"data":{"pagination":{"current_page":1,"page_size":20,"registers_count":0,"total_pages":1},"withdrawals":[]}}'}
     headers:
       Access-Control-Allow-Origin: ['*']
       Connection: [keep-alive]
-      Content-Length: ['169']
+      Content-Length: ['125']
       Content-Type: [application/json; charset=utf-8]
-      Date: ['Mon, 04 Feb 2019 14:23:03 GMT']
-      ETag: [W/"a9-vrPIEhHrpXoi3zQ0vaaqmDFgvU0"]
-      X-Response-Time: [90.952ms]
+      Date: ['Mon, 04 Feb 2019 14:22:54 GMT']
+      ETag: [W/"7d-G9f01EAAZFOo6/VML6cpDpM1HO4"]
+      X-Response-Time: [37.279ms]
     status: {code: 200, message: OK}
 version: 1

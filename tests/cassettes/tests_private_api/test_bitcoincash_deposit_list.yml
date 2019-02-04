@@ -11,15 +11,15 @@ interactions:
     method: GET
     uri: https://api.bitcointrade.com.br/v2/litecoin/deposits
   response:
-    body: {string: '{"message":null,"data":{"deposits":[{"code":"XXXXXXXXX","currency_code":"LTC","hash":"991b63ba6184ac1e3fd7d1086e0e91e039931761cff4a638f98629c1c39dc41b","amount":3,"status":"confirmed","create_date":"2019-01-16T17:49:06.243Z","confirmation_date":"2019-01-16T17:49:06.300Z"}],"pagination":{"current_page":1,"page_size":20,"registers_count":1,"total_pages":1}}}'}
+    body: {string: '{"message":null,"data":{"deposits":[{"code":"XXXXXXXXX","currency_code":"BCH","hash":"892c74741d65890d66682d014c44c716db6ab199e339c971a753169d23ee0b1a","amount":3,"status":"confirmed","create_date":"2019-01-16T17:49:06.243Z","confirmation_date":"2019-01-16T17:49:06.300Z"}],"pagination":{"current_page":1,"page_size":20,"registers_count":1,"total_pages":1}}}'}
     headers:
       access-control-allow-origin: ['*']
       connection: [keep-alive]
       content-length: ['358']
       content-type: [application/json; charset=utf-8]
-      date: ['Mon, 04 Feb 2019 14:22:38 GMT']
+      date: ['Mon, 04 Feb 2019 14:22:32 GMT']
       etag: [W/"166-rfLkm4r/+HIoWKx5Ehe35PPNK7c"]
-      x-response-time: [65.295ms]
+      x-response-time: [45.596ms]
     status: {code: 200, message: OK}
 - request:
     body: null
@@ -33,14 +33,14 @@ interactions:
     method: GET
     uri: https://api.bitcointrade.com.br/v2/litecoin/deposits
   response:
-    body: {string: '{"message":null,"data":{"deposits":[{"code":"XXXXXXXXX","currency_code":"LTC","hash":"991b63ba6184ac1e3fd7d1086e0e91e039931761cff4a638f98629c1c39dc41b","amount":3,"status":"confirmed","create_date":"2019-01-16T17:49:06.243Z","confirmation_date":"2019-01-16T17:49:06.300Z"}],"pagination":{"current_page":1,"page_size":20,"registers_count":1,"total_pages":1}}}'}
+    body: {string: '{"message":null,"data":{"deposits":[{"code":"XXXXXXXXX","currency_code":"BCH","hash":"892c74741d65890d66682d014c44c716db6ab199e339c971a753169d23ee0b1a","amount":3,"status":"confirmed","create_date":"2019-01-16T17:49:06.243Z","confirmation_date":"2019-01-16T17:49:06.300Z"}],"pagination":{"current_page":1,"page_size":20,"registers_count":1,"total_pages":1}}}'}
     headers:
       Access-Control-Allow-Origin: ['*']
       Connection: [keep-alive]
       Content-Length: ['358']
       Content-Type: [application/json; charset=utf-8]
-      Date: ['Mon, 04 Feb 2019 14:22:59 GMT']
+      Date: ['Mon, 04 Feb 2019 14:22:53 GMT']
       ETag: [W/"166-rfLkm4r/+HIoWKx5Ehe35PPNK7c"]
-      X-Response-Time: [43.335ms]
+      X-Response-Time: [124.144ms]
     status: {code: 200, message: OK}
 version: 1

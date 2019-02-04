@@ -9,16 +9,38 @@ interactions:
       Content-Type: [application/json]
       User-Agent: [python-requests/2.19.1]
     method: GET
-    uri: https://api.bitcointrade.com.br/v1/litecoin/withdraw
+    uri: https://api.bitcointrade.com.br/v2/litecoin/withdraw
   response:
-    body: {string: !!python/unicode '{"message":null,"data":{"pagination":{"total_pages":1,"current_page":1,"page_size":20,"registers_count":0},"withdrawals":[]}}'}
+    body: {string: '{"message":null,"data":{"pagination":{"current_page":1,"page_size":20,"registers_count":0,"total_pages":1},"withdrawals":[]}}'}
     headers:
       access-control-allow-origin: ['*']
       connection: [keep-alive]
       content-length: ['125']
       content-type: [application/json; charset=utf-8]
-      date: ['Fri, 27 Jul 2018 20:52:05 GMT']
-      etag: ['W/"7d-rtwBFQaFI9ep+iZH64PkbkqAhio:dtagent10147180705145128HQ6X"']
-      x-response-time: [132.660ms]
+      date: ['Mon, 04 Feb 2019 14:22:40 GMT']
+      etag: [W/"7d-G9f01EAAZFOo6/VML6cpDpM1HO4"]
+      x-response-time: [36.397ms]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v2/litecoin/withdraw
+  response:
+    body: {string: '{"message":null,"data":{"pagination":{"current_page":1,"page_size":20,"registers_count":0,"total_pages":1},"withdrawals":[]}}'}
+    headers:
+      Access-Control-Allow-Origin: ['*']
+      Connection: [keep-alive]
+      Content-Length: ['125']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Mon, 04 Feb 2019 14:23:01 GMT']
+      ETag: [W/"7d-G9f01EAAZFOo6/VML6cpDpM1HO4"]
+      X-Response-Time: [47.938ms]
     status: {code: 200, message: OK}
 version: 1

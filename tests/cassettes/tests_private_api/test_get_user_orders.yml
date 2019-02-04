@@ -9,16 +9,38 @@ interactions:
       Content-Type: [application/json]
       User-Agent: [python-requests/2.19.1]
     method: GET
-    uri: https://api.bitcointrade.com.br/v1/market/user_orders/list?currency=BTC
+    uri: https://api.bitcointrade.com.br/v2/market/user_orders/list?pair=BRLBTC
   response:
-    body: {string: !!python/unicode '{"message":null,"data":{"pagination":{"total_pages":1,"current_page":1,"page_size":20,"registers_count":1},"orders":[{"id":"DWuRFGZBMCXAnb9cCPMWH+KRpHYuEMxMFwoZ9yZmqGC=","code":"Tasd9TPEF","currency_code":"BTC","type":"sell","subtype":"limited","requested_amount":0.1,"executed_amount":0,"remaining_amount":0.1,"remaining_price":7000,"unit_price":70000,"total_price":0,"status":"waiting","update_date":"2018-06-07T20:51:57.387Z","create_date":"2018-06-07T20:51:57.387Z"},{"id":"wToMD3CdFbcYEkneHwfwEPqDhLyX+becLUD7Mbxxbhq=","code":"T56tCMthQ","currency_code":"BTC","type":"buy","subtype":"market","requested_amount":0.3051005,"executed_amount":0.3051005,"remaining_amount":0,"remaining_price":0,"unit_price":26841.769645,"total_price":4157.1,"status":"executed_completely","update_date":"2018-05-23T21:55:00.087Z","create_date":"2018-05-23T21:54:59.923Z"}]}}'}
+    body: {string: '{"message":null,"data":{"pagination":{"current_page":1,"page_size":20,"registers_count":73,"total_pages":4},"orders":[{"code":"XXXXXXXXXX","create_date":"2019-01-13T16:10:47.913Z","executed_amount":0.0227545,"id":"XXXXXXXXX=","pair_code":"BRLBTC","remaining_amount":0,"remaining_price":0,"requested_amount":0.0427545,"status":"executed_completely","subtype":"market","total_price":590.48,"type":"sell","unit_price":13810.943877,"update_date":"2019-01-13T16:10:47.953Z"},{"code":"XXXXXXXXXX","create_date":"2019-01-13T16:10:09.410Z","executed_amount":0.37943611,"id":"XXXXXXXXX=","pair_code":"BRLBTC","remaining_amount":0,"remaining_price":0,"requested_amount":0.35943611,"status":"executed_completely","subtype":"market","total_price":4964.76,"type":"sell","unit_price":13812.635575,"update_date":"2019-01-13T16:10:09.670Z"}]}}'}
     headers:
       access-control-allow-origin: ['*']
       connection: [keep-alive]
-      content-length: ['2781']
+      content-length: ['7762']
       content-type: [application/json; charset=utf-8]
-      date: ['Fri, 27 Jul 2018 20:52:02 GMT']
-      etag: ['W/"1e65-OcP1dTS1MgFGwHD7NxtrCzotStQ:dtagent10147180705145128HQ6X"']
-      x-response-time: [180.196ms]
+      date: ['Mon, 04 Feb 2019 14:22:38 GMT']
+      etag: [W/"1e52-IDpd3um67APQMFYiJiaQpr7sErA"]
+      x-response-time: [192.835ms]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Authorization: [ApiToken 42]
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.19.1]
+    method: GET
+    uri: https://api.bitcointrade.com.br/v2/market/user_orders/list?pair=BRLBTC
+  response:
+    body: {string: '{"message":null,"data":{"pagination":{"current_page":1,"page_size":20,"registers_count":73,"total_pages":4},"orders":[{"code":"XXXXXXXXXX","create_date":"2019-01-13T16:10:47.913Z","executed_amount":0.0227545,"id":"XXXXXXXXX=","pair_code":"BRLBTC","remaining_amount":0,"remaining_price":0,"requested_amount":0.0427545,"status":"executed_completely","subtype":"market","total_price":590.48,"type":"sell","unit_price":13810.943877,"update_date":"2019-01-13T16:10:47.953Z"},{"code":"XXXXXXXXXX","create_date":"2019-01-13T16:10:09.410Z","executed_amount":0.37943611,"id":"XXXXXXXXX=","pair_code":"BRLBTC","remaining_amount":0,"remaining_price":0,"requested_amount":0.35943611,"status":"executed_completely","subtype":"market","total_price":4964.76,"type":"sell","unit_price":13812.635575,"update_date":"2019-01-13T16:10:09.670Z"}]}}'}
+    headers:
+      Access-Control-Allow-Origin: ['*']
+      Connection: [keep-alive]
+      Content-Length: ['7762']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Mon, 04 Feb 2019 14:22:58 GMT']
+      ETag: [W/"1e52-/NQyiL2pNLiE2Wx7GGlr7E9ditA"]
+      X-Response-Time: [111.135ms]
     status: {code: 200, message: OK}
 version: 1

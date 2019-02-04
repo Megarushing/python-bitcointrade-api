@@ -1,21 +1,19 @@
 import tests
 import unittest
 import bitcointrade
-from bitcointrade.errors import ApiError, ArgumentError
 
 def assert_order_response(response):
     assert type(response) == dict
     assert "id" in response
-    assert "unit_price" in response
     assert "code" in response
-    assert "user_code" in response
+    assert "unit_price" in response
     assert "amount" in response
 
 def assert_complete_order_response(response):
     assert type(response) == dict
     assert "id" in response
     assert "code" in response
-    assert "currency_code" in response
+    assert "pair_code" in response
     assert "type" in response
     assert "subtype" in response
     assert "requested_amount" in response
@@ -49,6 +47,7 @@ def assert_withdraw_response(response):
     assert "create_date" in response
     assert "update_date" in response
     assert "transaction_id" in response
+    assert "currency_code" in response
     assert "link" in response
 
 def assert_withdraw_list_response(response):
@@ -74,6 +73,7 @@ class PrivateApiTestCase(unittest.TestCase):
     def setUp(self):
         self.api = bitcointrade.PrivateApi("42")
 
+    # Bitcoin
     @tests.vcr.use_cassette
     def test_bitcoin_withdraw_fee(self):
         response = self.api.bitcoin_withdraw_fee()
@@ -88,7 +88,6 @@ class PrivateApiTestCase(unittest.TestCase):
     def test_bitcoin_create_withdraw(self):
         response = self.api.bitcoin_create_withdraw(
             destination="1FSzwTdndhtbjGtRTKiu2vQHHrVAPUGSZG",
-            fee=0.0001,
             fee_type="slow",
             amount=0.1)
         assert_withdraw_response(response)
@@ -98,6 +97,7 @@ class PrivateApiTestCase(unittest.TestCase):
         response = self.api.bitcoin_deposit_list()
         assert_deposit_list_response(response)
 
+    # Ethereum
     @tests.vcr.use_cassette
     def test_ethereum_withdraw_fee(self):
         response = self.api.ethereum_withdraw_fee()
@@ -112,7 +112,6 @@ class PrivateApiTestCase(unittest.TestCase):
     def test_ethereum_create_withdraw(self):
         response = self.api.ethereum_create_withdraw(
             destination="0x27Db473751D76e2E9Af2b7A9b0199ef2c6Af838D",
-            fee=0.0001,
             fee_type="slow",
             amount=0.1)
         assert_withdraw_response(response)
@@ -122,6 +121,7 @@ class PrivateApiTestCase(unittest.TestCase):
         response = self.api.ethereum_deposit_list()
         assert_deposit_list_response(response)
 
+    # Litecoin
     @tests.vcr.use_cassette
     def test_litecoin_withdraw_fee(self):
         response = self.api.litecoin_withdraw_fee()
@@ -136,7 +136,6 @@ class PrivateApiTestCase(unittest.TestCase):
     def test_litecoin_create_withdraw(self):
         response = self.api.litecoin_create_withdraw(
             destination="LhWeEXcVHpHxonqbLooKPNMzbmMetdHJdC",
-            fee=0.0001,
             fee_type="slow",
             amount=0.1)
         assert_withdraw_response(response)
@@ -146,9 +145,34 @@ class PrivateApiTestCase(unittest.TestCase):
         response = self.api.litecoin_deposit_list()
         assert_deposit_list_response(response)
 
+    #Bitcoin Cash
+    @tests.vcr.use_cassette
+    def test_bitcoincash_withdraw_fee(self):
+        response = self.api.bitcoincash_withdraw_fee()
+        assert_fee_response(response)
+
+    @tests.vcr.use_cassette
+    def test_bitcoincash_withdraw_list(self):
+        response = self.api.bitcoincash_withdraw_list()
+        assert_withdraw_list_response(response)
+
+    @tests.vcr.use_cassette
+    def test_bitcoincash_create_withdraw(self):
+        response = self.api.bitcoincash_create_withdraw(
+            destination="1Dz46MhtvLH4Qd7RxXMxtMS8zZTBe5qiDj",
+            fee_type="slow",
+            amount=0.1)
+        assert_withdraw_response(response)
+
+    @tests.vcr.use_cassette
+    def test_bitcoincash_deposit_list(self):
+        response = self.api.litecoin_deposit_list()
+        assert_deposit_list_response(response)
+
+    # Market
     @tests.vcr.use_cassette
     def test_orderbook_full(self):
-        response = self.api.orderbook_full(currency="BTC")
+        response = self.api.orderbook_full(pair="BRLBTC")
         assert type(response) == dict
         assert "buying" in response
         assert type(response["buying"]) == list
@@ -161,7 +185,7 @@ class PrivateApiTestCase(unittest.TestCase):
 
     @tests.vcr.use_cassette
     def test_summary(self):
-        response = self.api.summary(currency="BTC")
+        response = self.api.summary(pair="BRLBTC")
         assert type(response) == list
         assert len(response) > 0
         assert "unit_price_24h" in response[0]
@@ -169,21 +193,22 @@ class PrivateApiTestCase(unittest.TestCase):
         assert "max_price" in response[0]
         assert "min_price" in response[0]
         assert "last_transaction_unit_price" in response[0]
-        assert "currency" in response[0]
+        assert "pair" in response[0]
 
     @tests.vcr.use_cassette
     def test_create_order(self):
         response = self.api.create_order(
-            currency="BTC",
+            pair="BRLLTC",
             amount=0.1,
             type="sell",
             subtype="limited",
-            unit_price=70000.0)
+            unit_price=70000.0,
+            request_price=70000.0*0.1)
         assert_order_response(response)
 
     @tests.vcr.use_cassette
     def test_get_user_orders(self):
-        response = self.api.get_user_orders(currency="BTC")
+        response = self.api.get_user_orders(pair="BRLBTC")
         assert type(response) == dict
         assert "orders" in response
         assert type(response["orders"]) == list
@@ -192,13 +217,13 @@ class PrivateApiTestCase(unittest.TestCase):
 
     @tests.vcr.use_cassette
     def test_cancel_order(self):
-        response = self.api.cancel_order(id="XXXXXXXXXXXXXXXXXXXXXXXXXX")
+        response = self.api.cancel_order(id="XXXXXX")
         assert response == None
 
     @tests.vcr.use_cassette
     def test_estimated_price(self):
         response = self.api.estimated_price(
-            currency="BTC",
+            pair="BRLBTC",
             amount=0.1,
             type="buy")
         assert type(response) == dict
