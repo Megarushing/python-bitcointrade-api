@@ -120,10 +120,8 @@ class PrivateApi(Base):
         check_args(params, { "pair": ["BRLBTC","BRLLTC","BRLBCH","BRLETH"],
                              "amount": float,
                              "type":["buy","sell"],
-                             "subtype":["market","limited","stopLimit"],
-                             "unit_price": float,
-                             "request_price": float})
-
+                             "subtype":["market","limited","stopLimit"]},
+                   optional_parameters={"unit_price": float,"request_price": float})
         return self.post_api("market","create_order", **params)
 
     def get_user_orders(self, **params):
